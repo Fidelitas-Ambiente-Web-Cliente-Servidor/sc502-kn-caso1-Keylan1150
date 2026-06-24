@@ -1,20 +1,17 @@
 :root {
-  /* ─── Paleta de colores ─────────────────────────
-     TODO: Podés cambiar estos valores para personalizar
-     el tema de tu restaurante
-  ─────────────────────────────────────────────── */
-  --color-primario:    #2C3E50;
-  --color-secundario:  #E67E22;
-  --color-fondo:       #FAF8F5;
-  --color-texto:       #333333;
-  --color-claro:       #FFFFFF;
-  --color-reserva-vip: #FFF3CD; /* fondo para grupos de 6+ personas */
+  --color-primario: #2C3E50;
+  --color-secundario: #E67E22;
+  --color-fondo: #FAF8F5;
+  --color-texto: #333333;
+  --color-claro: #FFFFFF;
+  --color-reserva-vip: #FFF3CD; /* Fondo cálido para alertas de aforo alto (6+ personas) */
+  --color-error: #DC3545;
 
   --fuente-titulo: 'Playfair Display', serif;
   --fuente-cuerpo: 'Lato', sans-serif;
 }
 
-/* ─── RESET Y BASE ─── */
+/* Reset general */
 * {
   margin: 0;
   padding: 0;
@@ -25,4 +22,61 @@ body {
   font-family: var(--fuente-cuerpo);
   background-color: var(--color-fondo);
   color: var(--color-texto);
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulo);
+}
+
+/* Clase obligatoria: Estilo del contenedor de las tarjetas de platos */
+.card-plato {
+  background-color: var(--color-claro);
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-plato:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Clase obligatoria: Estilos aplicados a las filas insertadas en la tabla */
+.fila-reserva {
+  transition: background-color 0.3s ease;
+}
+
+/* Resaltado comercial para reservaciones con 6 o más personas */
+.fila-reserva.vip-row {
+  background-color: var(--color-reserva-vip) !important;
+}
+
+/* Clase obligatoria: Alertas del DOM debajo de los campos inválidos */
+.error-campo {
+  color: var(--color-error);
+  font-size: 0.85rem;
+  margin-top: 4px;
+  min-height: 1.2rem;
+  font-weight: 500;
+}
+
+/* Estilo auxiliar para demarcar visualmente el input erróneo */
+.invalid-style {
+  border-color: var(--color-error) !important;
+  background-color: #FDF2F2 !important;
+}
+
+/* Clase obligatoria: Panel inferior de control estadístico */
+.resumen-reservas {
+  background-color: #F8F9FA;
+  border-left: 4px solid var(--color-primario) !important;
+}
+
+/* Control visual para el botón de categoría activo */
+.btn-filtro.active {
+  background-color: var(--color-primario) !important;
+  color: var(--color-claro) !important;
 }
